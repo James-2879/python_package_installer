@@ -1,4 +1,3 @@
-import os
 import pip
 import argparse
 
@@ -17,14 +16,6 @@ args = parser.parse_args()
 
 errors = []
 
-# install package for colored terminal output
-try: 
-    from termcolor import colored
-    # https://pypi.org/project/termcolor/
-except ModuleNotFoundError:
-    pip_install("termcolor")
-    from termcolor import colored
-
 def pip_install(package):
     try:
         pip.main(["install", package])
@@ -33,6 +24,14 @@ def pip_install(package):
         print(colored("[Error] Could not install "+package, "red"))
         errors.append("[Error] Could not install "+package)
         errors.append("["+package+" >_] "+error)
+
+# install package for colored terminal output
+try: 
+    from termcolor import colored
+    # https://pypi.org/project/termcolor/
+except ModuleNotFoundError:
+    pip_install("termcolor")
+    from termcolor import colored
 
 print(colored("> Installing core packages\n", "dark_grey"))
 for package in core_packages:
