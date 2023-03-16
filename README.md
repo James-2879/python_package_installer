@@ -1,2 +1,1 @@
-# python_package_installer
-Installs frequently used packages; to be used after a fresh Python install.
+Very basic script to install frequently used packages after a fresh install of a Python env.
